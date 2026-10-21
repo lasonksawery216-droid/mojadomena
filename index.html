@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pl" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GierekTV - Portal Tech, Custom ROM & Retro Gaming</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            cyan: '#06b6d4',
+                            purple: '#8b5cf6',
+                            pink: '#ec4899',
+                            dark: '#090a10',
+                            card: '#11131f',
+                            border: '#1f2438'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(100%)' },
+                            '100%': { transform: 'translateX(-100%)' }
+                        }
+                    },
+                    animation: {
+                        marquee: 'marquee 25s linear infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .glass-panel {
+            background: rgba(17, 19, 31, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+        .glass-card {
+            background: rgba(17, 19, 31, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(6, 182, 212, 0.4);
+            box-shadow: 0 12px 30px -10px rgba(6, 182, 212, 0.2);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090a10;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2438;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #06b6d4;
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-slate-100 font-sans min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-brand-cyan selection:text-black">
+
+    <!-- Ambient Background Effects -->
+    <div class="fixed top-0 left-1/4 w-[500px] h-[500px] bg-brand-cyan/10 rounded-full blur-[140px] pointer-events-none"></div>
+    <div class="fixed bottom-10 right-10 w-[500px] h-[500px] bg-brand-purple/10 rounded-full blur-[160px] pointer-events-none"></div>
+
+    <!-- MODERN TICKER / BANNER (Przewijany pasek) -->
+    <div class="bg-gradient-to-r from-brand-purple/20 via-brand-cyan/20 to-brand-purple/20 border-b border-white/10 py-2 overflow-hidden relative">
+        <div class="flex whitespace-nowrap animate-marquee items-center gap-8 text-xs font-mono font-medium tracking-wide text-brand-cyan">
+            <span class="flex items-center gap-2"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Witamy na nowej odsłonie portalu GierekTV!</span>
+            <span>•</span>
+            <span class="text-slate-300">Strona utworzona: 04.09.2026 r.</span>
+            <span>•</span>
+            <span class="text-brand-pink">Najnowsze poradniki Android & Custom ROM dla Samsung Galaxy!</span>
+            <span>•</span>
+            <span class="text-slate-300">Sprawdź nasze klasyczne gry z lat 2000-2010 do pobrania!</span>
+        </div>
+    </div>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-white/10 px-4 lg:px-8 py-3.5">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-cyan via-brand-purple to-brand-pink p-0.5 shadow-lg group-hover:shadow-brand-cyan/40 transition-all duration-300">
+                    <div class="w-full h-full bg-brand-dark rounded-[10px] flex items-center justify-center">
+                        <i data-lucide="smartphone" class="w-5 h-5 text-brand-cyan group-hover:scale-110 transition-transform"></i>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-display font-black text-xl tracking-wider text-white group-hover:text-brand-cyan transition-colors">
+                        GIEREK<span class="text-brand-cyan">TV</span>
+                    </span>
+                    <span class="text-[9px] uppercase tracking-widest text-slate-400 font-semibold -mt-1">Tech • Mods • Gaming</span>
+                </div>
+            </a>
+
+            <!-- Social Media Buttons (Top Bar Navigation) -->
+            <div class="hidden md:flex items-center gap-3">
+                <a href="https://www.youtube.com/@GierekTV" target="_blank" rel="noopener" class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 hover:bg-red-500/20 text-xs font-semibold transition">
+                    <i data-lucide="youtube" class="w-4 h-4"></i> YouTube
+                </a>
+                <a href="https://discord.gg/ajCmcHrNc" target="_blank" rel="noopener" class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 hover:bg-indigo-500/20 text-xs font-semibold transition">
+                    <i data-lucide="message-square" class="w-4 h-4"></i> Discord
+                </a>
+                <a href="https://www.tiktok.com/@gierektv" target="_blank" rel="noopener" class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-pink-500/10 border border-pink-500/30 text-pink-400 hover:bg-pink-500/20 text-xs font-semibold transition">
+                    <i data-lucide="video" class="w-4 h-4"></i> TikTok
+                </a>
+                <a href="https://gierektv.blogspot.com/" target="_blank" rel="noopener" class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 hover:bg-amber-500/20 text-xs font-semibold transition">
+                    <i data-lucide="rss" class="w-4 h-4"></i> Blog
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button onclick="toggleMobileMenu()" class="md:hidden p-2.5 rounded-xl glass-panel text-slate-300 hover:text-white">
+                <i data-lucide="menu" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Social Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden mt-3 pt-3 border-t border-white/10 grid grid-cols-2 gap-2">
+            <a href="https://www.youtube.com/@GierekTV" target="_blank" class="flex items-center gap-2 p-2 rounded-lg bg-red-500/10 text-red-400 text-xs font-semibold">
+                <i data-lucide="youtube" class="w-4 h-4"></i> YouTube
+            </a>
+            <a href="https://discord.gg/ajCmcHrNc" target="_blank" class="flex items-center gap-2 p-2 rounded-lg bg-indigo-500/10 text-indigo-400 text-xs font-semibold">
+                <i data-lucide="message-square" class="w-4 h-4"></i> Discord
+            </a>
+            <a href="https://www.tiktok.com/@gierektv" target="_blank" class="flex items-center gap-2 p-2 rounded-lg bg-pink-500/10 text-pink-400 text-xs font-semibold">
+                <i data-lucide="video" class="w-4 h-4"></i> TikTok
+            </a>
+            <a href="https://gierektv.blogspot.com/" target="_blank" class="flex items-center gap-2 p-2 rounded-lg bg-amber-500/10 text-amber-400 text-xs font-semibold">
+                <i data-lucide="rss" class="w-4 h-4"></i> Blog
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="max-w-7xl mx-auto px-4 lg:px-8 pt-10 pb-6 text-center space-y-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-cyan/10 border border-brand-cyan/30 text-brand-cyan text-xs font-medium">
+            <i data-lucide="cpu" class="w-4 h-4"></i> Modyfikacje Androida & Retro Gaming
+        </div>
+        <h1 class="text-3xl sm:text-5xl font-extrabold font-display tracking-tight text-white max-w-3xl mx-auto leading-tight">
+            Witaj na oficjalnej stronie <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-cyan via-brand-purple to-brand-pink">GierekTV</span>
+        </h1>
+        <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto font-light leading-relaxed">
+            Centrum poradników modyfikacji smartfonów, bazy Custom ROM-ów, solucji instalacji Custom Recovery oraz repozytorium gier retro.
+        </p>
+
+        <!-- Search Bar Component -->
+        <div class="max-w-md mx-auto pt-2">
+            <div class="relative">
+                <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-3.5 text-slate-500"></i>
+                <input type="text" id="searchInput" onkeyup="filterCards()" placeholder="Szukaj sekcji lub poradnika (np. S3, ROM, gry)..." class="w-full bg-brand-card/90 border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-brand-cyan transition">
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN GRID SECTION -->
+    <main class="max-w-7xl mx-auto px-4 lg:px-8 py-8 flex-grow w-full">
+        
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-xl font-bold font-display text-white flex items-center gap-2">
+                <i data-lucide="layout-grid" class="w-5 h-5 text-brand-cyan"></i> Wszystkie Sekcje i Zasoby
+            </h2>
+            <span class="text-xs text-slate-500 font-mono">10 Kafelków</span>
+        </div>
+
+        <div id="cardsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+            <!-- Card 1: Poradniki -->
+            <a href="poradniki.htm" class="card-item glass-card p-6 rounded-2xl flex flex-col justify-between group">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan group-hover:scale-110 transition-transform">
+                        <i data-lucide="book-open" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-white font-display group-hover:text-brand-cyan transition-colors">Poradniki</h3>
+                        <p class="text-slate-400 text-xs mt-2 leading-relaxed">
+                            Jak krok po kroku zainstalować Custom Recovery lub Custom ROM na smartfonach, np. Galaxy S3 LTE i innych.
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-semibold text-brand-cyan">
+                    <span>Otwórz poradniki</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+            <!-- Card 2: Z czego korzystam -->
+            <a href="z czego korzystam.html" class="card-item glass-card p-6 rounded-2xl flex flex-col justify-between group">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-brand-purple/10 border border-brand-purple/30 flex items-center justify-center text-brand-purple group-hover:scale-110 transition-transform">
+                        <i data-lucide="laptop" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-white font-display group-hover:text-brand-purple transition-colors">Z czego korzystam</h3>
+                        <p class="text-slate-400 text-xs mt-2 leading-relaxed">
+                            Spis mojego codziennego sprzętu, komputerów, akcesoriów oraz oprogramowania używanego w projektach.
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-semibold text-brand-purple">
+                    <span>Zobacz mój setup</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+            <!-- Card 3: Custom ROM -->
+            <a href="custom rom.html" class="card-item glass-card p-6 rounded-2xl flex flex-col justify-between group">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-brand-pink/10 border border-brand-pink/30 flex items-center justify-center text-brand-pink group-hover:scale-110 transition-transform">
+                        <i data-lucide="layers" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-white font-display group-hover:text-brand-pink transition-colors">Custom ROM</h3>
+                        <p class="text-slate-400 text-xs mt-2 leading-relaxed">
+                            Baza odnośników do różnych modyfikacji Androida (Custom ROM-ów) głównie dla modeli marki Samsung.
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-semibold text-brand-pink">
+                    <span>Przeglądaj ROM-y</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+            <!-- Card 4: Custom Recovery -->
+            <a href="custom recovery.html" class="card-item glass-card p-6 rounded-2xl flex flex-col justify-between group">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 group-hover:scale-110 transition-transform">
+                        <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-white font-display group-hover:text-emerald-400 transition-colors">Custom Recovery</h3>
+                        <p class="text-slate-400 text-xs mt-2 leading-relaxed">
+                            Zbiór bezpiecznych wydań Custom Recovery (TWRP, CWM) dedykowanych urządzeniom Samsung Galaxy.
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-semibold text-emerald-400">
+                    <span>Pobierz Recovery</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+            <!-- Card 5: Moje telefony -->
+            <a href="moje_telefony.html" class="card-item glass-card p-6 rounded-2xl flex flex-col justify-between group">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 group-hover:scale-110 transition-transform">
+                        <i data-lucide="smartphone font" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-white font-display group-hover:text-amber-400 transition-colors">Moje telefony</h3>
+                        <p class="text-slate-400 text-xs mt-2 leading-relaxed">
+                            Prezentacja i opisy prywatnej kolekcji telefonów komórkowych i smartfonów gromadzonych przez lata.
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-semibold text-amber-400">
+                    <span>Zobacz kolekcję</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+            <!-- Card 6: Gry do pobrania -->
+            <a href="gry do pobrania.html" class="card-item glass-card p-6 rounded-2xl flex flex-col justify-between group">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 group-hover:scale-110 transition-transform">
+                        <i data-lucide="gamepad-2" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-white font-display group-hover:text-red-400 transition-colors">Gry do pobrania</h3>
+                        <p class="text-slate-400 text-xs mt-2 leading-relaxed">
+                            Kultowe tytuły i legendarne gry z lat 2000-2010 z możliwością szybkiego pobrania.
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-semibold text-red-400">
+                    <span>Pobierz gry</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+            <!-- Card 7: Moja aplikacja -->
+            <a href="moja-apka.html" class="card-item glass-card p-6 rounded-2xl flex flex-col justify-between group">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform">
+                        <i data-lucide="code-2" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-white font-display group-hover:text-blue-400 transition-colors">Moja aplikacja</h3>
+                        <p class="text-slate-400 text-xs mt-2 leading-relaxed">
+                            Dziennik prac i aktualności dotyczące tworzenia moich własnych aplikacji autorskich.
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-semibold text-blue-400">
+                    <span>Sprawdź postępy</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+            <!-- Card 8: Pliki do pobrania -->
+            <a href="pliki-do-podrania.html" class="card-item glass-card p-6 rounded-2xl flex flex-col justify-between group">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center text-teal-400 group-hover:scale-110 transition-transform">
+                        <i data-lucide="download-cloud" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-white font-display group-hover:text-teal-400 transition-colors">Pliki do pobrania</h3>
+                        <p class="text-slate-400 text-xs mt-2 leading-relaxed">
+                            Główne repozytorium narzędzi, sterowników oraz niezbędnych paczek ZIP.
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-semibold text-teal-400">
+                    <span>Centrum pobierania</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </div>
+            </a>
+
+            <!-- Card 9: Blog -->
+            <a href="https://gierektv.blogspot.com/" target="_blank" class="card-item glass-card p-6 rounded-2xl flex flex-col justify-between group">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-500 group-hover:scale-110 transition-transform">
+                        <i data-lucide="newspaper" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-white font-display group-hover:text-amber-500 transition-colors">Blogger GierekTV</h3>
+                        <p class="text-slate-400 text-xs mt-2 leading-relaxed">
+                            Artykuły, przemyślenia technologiczne i obszerniejsze wpisy blogowe.
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-semibold text-amber-500">
+                    <span>Czytaj wpisy</span>
+                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                </div>
+            </a>
+
+            <!-- Card 10: Discord Community -->
+            <a href="https://discord.gg/ajCmcHrNc" target="_blank" class="card-item glass-card p-6 rounded-2xl flex flex-col justify-between group">
+                <div class="space-y-4">
+                    <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 group-hover:scale-110 transition-transform">
+                        <i data-lucide="users" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-white font-display group-hover:text-indigo-400 transition-colors">Społeczność Discord</h3>
+                        <p class="text-slate-400 text-xs mt-2 leading-relaxed">
+                            Dołącz do serwera Discord, zadawaj pytania i uzyskaj pomoc techniczną od społeczności.
+                        </p>
+                    </div>
+                </div>
+                <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-semibold text-indigo-400">
+                    <span>Dołącz do serwera</span>
+                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="glass-panel border-t border-white/10 mt-16 py-8 px-4 lg:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded-lg bg-brand-cyan/20 flex items-center justify-center text-brand-cyan">
+                    <i data-lucide="smartphone" class="w-3.5 h-3.5"></i>
+                </div>
+                <span class="font-bold text-white font-display">GierekTV</span>
+                <span>• Autorska strona internetowa (www)</span>
+            </div>
+            <p>Data utworzenia: 04.09.2026 r.</p>
+            <p>© 2026 GierekTV. Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Search Filter Logic
+        function filterCards() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.getElementsByClassName('card-item');
+
+            Array.from(cards).forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(input)) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

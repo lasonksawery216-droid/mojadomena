@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z czego korzystam? - GierekTV</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-ticker {
+            display: inline-block;
+            white-space: nowrap;
+            animation: ticker 25s linear infinite;
+        }
+        .animate-ticker:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col selection:bg-cyan-500 selection:text-slate-950">
+
+    <!-- Pasek informacyjny (Ticker) -->
+    <div class="bg-slate-900 border-b border-cyan-900/40 text-cyan-400 py-2.5 px-4 overflow-hidden shadow-inner flex items-center">
+        <div class="flex items-center gap-2 bg-slate-950 px-3 py-1 rounded-md text-xs font-bold uppercase tracking-wider text-cyan-400 border border-cyan-800 shrink-0 z-10 shadow-sm">
+            <i data-lucide="hard-drive" class="w-4 h-4 text-cyan-400 animate-pulse"></i> Sprzęt
+        </div>
+        <div class="overflow-hidden w-full relative ml-3">
+            <div class="animate-ticker text-sm font-medium tracking-wide">
+                Witam na stronie internetowej GierekTV (gierektv.duckdns.org) — zakładka „Z czego korzystam”.
+            </div>
+        </div>
+    </div>
+
+    <!-- Nagłówek i Powrót -->
+    <header class="bg-slate-900/90 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+            <a href="index.html" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-cyan-400 font-semibold text-sm rounded-xl border border-slate-700 transition-all shadow-md">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> Wróć do str. głównej
+            </a>
+            <h1 class="text-xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400 uppercase hidden sm:block">
+                Z czego korzystam
+            </h1>
+        </div>
+    </header>
+
+    <!-- Główna zawartość -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow space-y-8">
+
+        <!-- Laptop HP 15-dw3003ne -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl space-y-4">
+            <div class="flex items-center gap-3">
+                <div class="p-3 bg-blue-950 border border-blue-800 text-blue-400 rounded-xl">
+                    <i data-lucide="laptop" class="w-7 h-7"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-white">HP 15-dw3003ne</h2>
+            </div>
+            <p class="text-slate-300 leading-relaxed text-base">
+                Korzystam z tego laptopa na co dzień przy biurku. Nagrywam na nim też przykładowo filmiki na kanał 
+                <a href="http://www.youtube.com/@GierekTV" target="_blank" rel="noopener noreferrer" class="text-red-400 font-semibold underline hover:text-red-300">GierekTV</a> 
+                zazwyczaj jak mi się chce to też na nim montuję. Niestety renderowanie filmików zajmuje koszmarnie dużo czasu przez słabą grafikę NVIDIA MX350 oraz małą ilość pamięci RAM (tylko 8 GB). Procesor jest dobry, bo jest to 11. generacja Intel Core i5. W najbliższym czasie zamierzam tylko dołożyć kolejne 8 GB RAM-u, żeby było razem 16 GB.
+            </p>
+        </div>
+
+        <!-- Samsung Galaxy S23 FE 8/256GB -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl space-y-4">
+            <div class="flex items-center gap-3">
+                <div class="p-3 bg-indigo-950 border border-indigo-800 text-indigo-400 rounded-xl">
+                    <i data-lucide="smartphone" class="w-7 h-7"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-white">Samsung Galaxy S23 FE 8/256GB</h2>
+            </div>
+            <p class="text-slate-300 leading-relaxed text-base">
+                Mam ten telefon od końca czerwca lub początku lipca. Korzysta mi się z niego bardzo przyjemnie głównie przez 8 GB RAM-u oraz aż 256 GB pamięci wewnętrznej. Telefon jest też jeszcze wspierany do końca chyba 2027 roku, ale na pewno dostanie aktualizację do One UI 9 na bazie Androida 17. W ustawieniach polecam włączyć opcję „RAM Plus”, która „dodaje” 8 GB takiego nie do końca RAM-u z pamięci wewnętrznej telefonu.
+            </p>
+            <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-sm text-slate-400 space-y-2">
+                <p class="flex items-center gap-2 text-cyan-400 font-semibold">
+                    <i data-lucide="wifi" class="w-4 h-4"></i> Testy sieci 5G & Bateria:
+                </p>
+                <p>• Sieć 5G niedaleko nadajnika z <strong>PLAY</strong> osiąga prędkość ok. 300–400 Mbps, a z <strong>T-Mobile</strong> w okolicach 400 do nawet 700 Mbps.</p>
+                <p>• Przy niskim poziomie baterii polecam włączyć tryb LTE zamiast 5G.</p>
+            </div>
+        </div>
+
+        <!-- Samsung Galaxy S3 LTE (GT-I9305) -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl space-y-4">
+            <div class="flex items-center gap-3">
+                <div class="p-3 bg-purple-950 border border-purple-800 text-purple-400 rounded-xl">
+                    <i data-lucide="smartphone-nfc" class="w-7 h-7"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-white">Samsung Galaxy S3 LTE (GT-I9305)</h2>
+            </div>
+            <p class="text-slate-300 leading-relaxed text-base">
+                Mam ten telefon od niedawna — został przeze mnie kupiony na Allegro za 120 zł w stanie bardzo dobrym (bdb). Zainstalowałem na nim LineageOS 14.1 (czyli Androida 7.1) z paczką GApps Pico (sam Sklep Play i usługi Google Play). Zainstalowałem potrzebne aplikacje: WhatsApp, Szkolny.eu, Spotify, Chrome i ForceLTE.
+            </p>
+            <p class="text-slate-300 leading-relaxed text-base">
+                Dzięki temu, że ta wersja S3 ma 2 GB RAM-u, a ja jeszcze wgrałem kernel i podkręciłem procesor, to z tego naprawdę da się korzystać! LTE śmiga i w ogóle ten telefon przeznaczyłem na zapasowy.
+            </p>
+            <div class="pt-2">
+                <a href="moje%20telefony.html" class="inline-flex items-center gap-2 text-cyan-400 font-semibold hover:text-cyan-300 transition-colors">
+                    Zobacz pełną specyfikację tego telefonu <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Stopka -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-6 mt-12 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>&copy; 2026 GierekTV. Wszelkie prawa zastrzeżone.</p>
+            <p class="text-cyan-400 font-mono">gierektv.duckdns.org</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
